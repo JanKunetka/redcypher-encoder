@@ -1,0 +1,22 @@
+﻿<Window x:Class="RedCipher.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RedCipher.Views"
+        xmlns:views="clr-namespace:RedCipher.Views"
+        xmlns:screenVMs="clr-namespace:RedCipher.VMs.Core.Screens;assembly=ViewModels"
+        mc:Ignorable="d"
+        Title="RedCipher Encoder" 
+        Width="500" Height="275" >
+    
+    <Grid Margin="10">
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type screenVMs:MainIndexScreen}">
+                <views:MainIndexScreen/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentVM}"/>
+    </Grid>
+</Window>

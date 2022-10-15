@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <RootNamespace>View</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Resource\img" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resource\img\img_AddFile.png" />
+      <Resource Include="Resource\img\img_AddFile.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ViewModels\ViewModels.csproj" />
+    </ItemGroup>
+
+</Project>
