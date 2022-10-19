@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using RedCipher.Models.FileProcessing;
 
 namespace RedCipher.Models.Coder
 {
@@ -8,25 +7,25 @@ namespace RedCipher.Models.Coder
     /// </summary>
     public class CipherCoder
     {
-        public enum State
+        /// <summary>
+        /// Encode a text message into an image.
+        /// </summary>
+        /// <param name="message">The message to encode.</param>
+        /// <param name="image">The image bitmap to encode into.</param>
+        /// <returns>The image bitmap file with an encoded message.</returns>
+        public Bitmap Encode(string message, Bitmap image)
         {
-            Hiding,
-            FillingWithZeros
-        };
-
-        public Bitmap Encode(string message, Bitmap bmp)
-        {
-            State state = State.Hiding;
+            CoderState state = CoderState.Hiding;
             int charIndex = 0;
             int charValue = 0;
             long pixelElementIndex = 0;
             int zeros = 0;
 
-            for (int i = 0; i < bmp.Height; i++)
+            for (int i = 0; i < image.Height; i++)
             {
-                for (int j = 0; j < bmp.Width; j++)
+                for (int j = 0; j < image.Width; j++)
                 {
-                    Color pixel = bmp.GetPixel(j, i);
+                    Color pixel = image.GetPixel(j, i);
                     int R = pixel.R - pixel.R % 2;
                     int G = pixel.G - pixel.G % 2;
                     int B = pixel.B - pixel.B % 2;
@@ -35,63 +34,67 @@ namespace RedCipher.Models.Coder
                     {
                         if (pixelElementIndex % 8 == 0)
                         {
-                            if (state == State.FillingWithZeros && zeros == 8)
+                            if (state == CoderState.FillingWithZeros && zeros == 8)
                             {
                                 if ((pixelElementIndex - 1) % 3 < 2)
                                 {
-                                    bmp.SetPixel(j, i, Color.FromArgb(R, G, B));
+                                    image.SetPixel(j, i, Color.FromArgb(R, G, B));
                                 }
-                                return bmp;
+                                return image;
                             }
 
-                            if (charIndex >= message.Length) state = State.FillingWithZeros;
+                            if (charIndex >= message.Length) state = CoderState.FillingWithZeros;
                             else { charValue = message[charIndex++]; }
                         }
 
                         switch (pixelElementIndex % 3)
                         {
                             case 0:
-                                if (state != State.Hiding) break;
+                                if (state != CoderState.Hiding) break;
                                 R += charValue % 2;
                                 charValue /= 2;
                                 break;
                             case 1:
-                                if (state != State.Hiding) break;
+                                if (state != CoderState.Hiding) break;
                                 G += charValue % 2;
                                 charValue /= 2;
                                 break;
                             case 2:
-                                if (state == State.Hiding)
+                                if (state == CoderState.Hiding)
                                 {
                                     B += charValue % 2;
                                     charValue /= 2;
                                 }
-                                bmp.SetPixel(j, i, Color.FromArgb(R, G, B)); 
+                                image.SetPixel(j, i, Color.FromArgb(R, G, B)); 
                                 break;
                         }
 
                         pixelElementIndex++;
 
-                        if (state == State.FillingWithZeros) zeros++;
+                        if (state == CoderState.FillingWithZeros) zeros++;
                     }
                 }
             }
 
-            return bmp;
+            return image;
         }
 
-        public string Decode(Bitmap bmp)
+        /// <summary>
+        /// Decodes information from image, encoded by the <see cref="Encode"/>() method. If no information is found, returns an empty string.
+        /// </summary>
+        /// <param name="image">The image to decode from.</param>
+        /// <returns>A hidden message or an empty string.</returns>
+        public string Decode(Bitmap image)
         {
             string extractedText = "";
             int colorUnitIndex = 0;
             int charValue = 0;
 
-
-            for (int i = 0; i < bmp.Height; i++)
+            for (int i = 0; i < image.Height; i++)
             {
-                for (int j = 0; j < bmp.Width; j++)
+                for (int j = 0; j < image.Width; j++)
                 {
-                    Color pixel = bmp.GetPixel(j, i);
+                    Color pixel = image.GetPixel(j, i);
 
                     for (int n = 0; n < 3; n++)
                     {

@@ -24,8 +24,9 @@ namespace RedCipher.Models
         public void SetFile(string path)
         {
             if (string.IsNullOrEmpty(path)) return;
+            ClearFile();
             fileName = FileSystem.GetFileName(path);
-            imageData = new Bitmap(path);
+            imageData = FileSystem.Load(path);
         }
 
         /// <summary>
@@ -34,6 +35,7 @@ namespace RedCipher.Models
         public void ClearFile()
         {
             fileName = "";
+            imageData?.Dispose();
             imageData = null;
         }
 
@@ -44,7 +46,7 @@ namespace RedCipher.Models
         public void SaveFile(string path)
         {
             EnsureDataIsLoaded();
-            imageData.Save(path);
+            FileSystem.Save(path, new Bitmap(imageData));
         }
 
         /// <summary>

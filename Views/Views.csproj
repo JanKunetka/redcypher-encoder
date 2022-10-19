@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
         <RootNamespace>View</RootNamespace>
+        <ApplicationIcon>Resource\img\img_Icon.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,6 +16,10 @@
     <ItemGroup>
       <None Remove="Resource\img\img_AddFile.png" />
       <Resource Include="Resource\img\img_AddFile.png" />
+      <None Remove="Resource\img\img_Icon.png" />
+      <Resource Include="Resource\img\img_Icon.png" />
+      <None Remove="Resource\img\img_Icon.ico" />
+      <Resource Include="Resource\img\img_Icon.ico" />
     </ItemGroup>
 
     <ItemGroup>

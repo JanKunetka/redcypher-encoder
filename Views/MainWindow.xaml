@@ -8,6 +8,7 @@
         xmlns:screenVMs="clr-namespace:RedCipher.VMs.Core.Screens;assembly=ViewModels"
         mc:Ignorable="d"
         Title="RedCipher Encoder" 
+        Icon="Resource/img/img_Icon.ico"
         ResizeMode="CanMinimize"
         Width="500" Height="275" >
     
