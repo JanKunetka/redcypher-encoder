@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "EzTlrAv5Kri4zoe6SJ2AFVarW79d3NqvVza3Wrhde9pYv9rqv+Yrux7a7/aUUtV2yS5M1zoTWmwEGFuHpepmFA==",
+  "dgSpecHash": "UYFsFCEPAGsEqH1+SjcCqKvjcmlLaAXc83LwSX9BQ0oRz1AtgNWOiGmZrvGpxAJjNSSGrt+2gAbj/lVc6IPPPw==",
   "success": true,
   "projectFilePath": "D:\\User\\Ostravská univerzita\\Magisterské studium\\Předměty\\1. Semestr\\7KOSB\\Projekty\\01 - Cipher Encoder\\RedCypher Encoder\\Views\\Views.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0-rc.2.22472.3\\microsoft.win32.systemevents.7.0.0-rc.2.22472.3.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\system.drawing.common\\7.0.0-rc.2.22472.3\\system.drawing.common.7.0.0-rc.2.22472.3.nupkg.sha512"
+  ],
   "logs": []
 }

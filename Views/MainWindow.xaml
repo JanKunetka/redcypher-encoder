@@ -8,6 +8,7 @@
         xmlns:screenVMs="clr-namespace:RedCipher.VMs.Core.Screens;assembly=ViewModels"
         mc:Ignorable="d"
         Title="RedCipher Encoder" 
+        ResizeMode="CanMinimize"
         Width="500" Height="275" >
     
     <Grid Margin="10">

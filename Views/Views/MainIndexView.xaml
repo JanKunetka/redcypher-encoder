@@ -42,16 +42,20 @@
                            />
                 
                 <Button Grid.Row="1"
+                        Command="{Binding OpenFileCommand}"
+                        Cursor="Hand"
                         Background="White"
+                        
                         BorderThickness="0"
                         >
                     <StackPanel>
                         <Image Style="{StaticResource AddFile}"
+                               Source="{Binding IconImage}"
                                RenderOptions.BitmapScalingMode="Fant"
                                Height="64"
                         />
                 
-                        <Label Content="Click to open file"
+                        <Label Content="{Binding FileNameTitle}"
                                FontWeight="Bold"
                                HorizontalAlignment="Center"
                         />
@@ -59,13 +63,11 @@
                 </Button>
                 
                 <Button Grid.Row="2"
-                        Margin="50 10 50 10 "
                         Content="Clear"
+                        Command="{Binding ClearFileCommand}"
+                        Margin="50 10 50 10"
                         />
             </Grid>
-            
-            
-            
             
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -86,16 +88,21 @@
                 
                 <TextBox Grid.Row="1" Grid.Column="0"
                          Grid.ColumnSpan="2"
+                         Text="{Binding SecretMessage}"
                          Margin="10"
                          TextWrapping="Wrap"
                          />
                 
                 <Button Grid.Row="2" Grid.Column="0"
                         Content="Decode"
+                        Background="#ffeaa7"
+                        Command="{Binding DecodeMessageCommand}"
                         />
                 
                 <Button Grid.Row="2" Grid.Column="1"
                         Content="Encode"
+                        Background="#55efc4"
+                        Command="{Binding EncodeMessageCommand}"
                 />
                 
             </Grid>
